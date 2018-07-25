@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Pacifico');
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.bgColor {
+  background-color: #3347fffd;
+}
+a {
+  color: #33cffffd;
+}
+a:hover {
+  text-decoration: none;
+  color: #3352fffd;
+}
+#footer {
+  margin-top: 130px;
+}
+#logo {
+  font-family: 'Pacifico', cursive;
+}
+#logoutBtn{
+  
+  display: inline-block !important;
+}
