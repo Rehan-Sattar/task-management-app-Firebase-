@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" -->
+    <!-- crossorigin="anonymous"> -->
+    <link rel="stylesheet" href="./bootstrap.css">
+    
+  <script src="https://www.gstatic.com/firebasejs/4.9.0/firebase.js"></script>
+  <link rel="stylesheet" href="./style.css">
+  <title>Todo Application</title>
+</head>
+
+<body>
+  <header class="text-white bgColor p-3">
+    <h1 class="text-center">
+      <i class="fa fa-pencil"></i> TODO APPLICATION</h1>
+  </header>
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="text-center bgColor card-header text-white">
+            <h3>
+              <i class="fa fa-user"></i> Login in</h3>
+          </div>
+          <div class="card-body">
+            <div class="form-group">
+              <input id="userEmail" autofocus type="email" class="form-control" required placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <input id="userPassword" type="password" class="form-control" required placeholder="Password" required>
+            </div>
+            <button class="btn bgColor text-white" id="btnLogin">Login</button>
+          </div>
+          <div class="card-footer">
+            <p class="muted">Not Have account ?
+              <a href="javascript:void(0)" data-toggle="modal" data-target="#signup-modal">click here!</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+  <!-- modal for successfull login -->
+
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bgColor">
+          <h5 class="modal-title text-white">Welcome </h5>
+          <button class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <p id="contentLogin"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-warning" data-dismiss="modal">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- register modal -->
+
+  <div class="modal fade" id="warningModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bgColor text-white">
+          <div class="modal-title">ERROR!</div>
+          <div class="close" data-dismiss="modal">&times;</div>
+        </div>
+        <div class="modal-body">
+          <p class="lead">Please Register first.</p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-warning" data-dismiss="modal">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- modal of sign in -->
+
+  <div class="modal fade" id="signup-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header  bgColor text-white">
+          <div class="modal-title">
+            <h3>
+              <i class="fa fa-users"></i> Sign up</h3>
+          </div>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="uName"> Name: </label>
+            <input id="uName" type="text" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="uId"> Email:</label>
+            <input id="uId" type="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="uPassword"> Password:</label>
+            <input id="uPassword" type="password" class="form-control" required>
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-outline-primary" id="signUpButton">Sign up</button>
+            <button class="btn btn-outline-primary" data-dismiss="modal">close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="loader">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="myCustomModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bgColor text-white">
+          <div class="modal-title">
+            <h3>error</h3>
+          </div>
+        </div>
+        <div class="modal-body">
+          <p id="content-modal"></p>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-outline-priary" data-dismiss="modal">close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+<!-- custom modal -->
+
+<!-- <div class="modal fade" id="myCustomModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-danger text-white">
+        <h2>Error</h2>
+      </div>
+    </div>
+    <div class="modal-body">
+      <p id="content-modal">  </p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-outline-priary" data-dismiss="modal">close</button>
+    </div>
+  </div>
+</div> -->
+
+<script src="./app.js"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+  crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+  crossorigin="anonymous"></script>
+
+</html>
